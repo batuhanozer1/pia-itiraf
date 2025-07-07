@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ConfessionForm from './components/ConfessionForm';
 import ConfessionList from './components/ConfessionList';
+import Terms from './components/terms';
 import './App.css';
 
 function App() {
@@ -21,16 +22,24 @@ function App() {
               Make Confession
             </button>
             <button 
-              className={`btn ${currentPage === 'list' ? 'btn-primary' : 'btn-outline-light'}`}
+              className={`btn ${currentPage === 'list' ? 'btn-primary' : 'btn-outline-light'} me-2`}
               onClick={() => setCurrentPage('list')}
             >
               View Confessions
             </button>
+            {/* <button 
+              className={`btn ${currentPage === 'terms' ? 'btn-primary' : 'btn-outline-light'}`}
+              onClick={() => setCurrentPage('terms')}
+            >
+              Terms
+            </button> */}
           </div>
         </div>
       </nav>
 
-      {currentPage === 'form' ? <ConfessionForm /> : <ConfessionList />}
+      {currentPage === 'form' && <ConfessionForm setCurrentPage={setCurrentPage} />}
+      {currentPage === 'list' && <ConfessionList />}
+      {currentPage === 'terms' && <Terms />}
     </div>
   );
 }
